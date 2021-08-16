@@ -10,6 +10,7 @@ import { ImageNodeModel } from '../nodes/imagenode/ImageNodeModel';
 // Setup the diagram model
 let diagramModel = new RJD.DiagramModel();
 
+// React- DnD Properties  
 const target = {
     drop(props, monitor) {
         const {x: pageX, y: pageY} = monitor.getSourceClientOffset();
@@ -18,6 +19,7 @@ const target = {
         const x = pageX - left - offsetX;
         const y = pageY - top - offsetY;
         const item = monitor.getItem();
+        
 
         let node;
 
@@ -39,8 +41,11 @@ const target = {
             });
         }
 
-        node.x = x;
-        node.y = y;
+        // console.log(`x = ${x}, y = ${y}`)
+        // console.log(gridSnap(x, y))
+
+        node.x = x ;
+        node.y = y ;
 
         // clear previously selected item(s)
         diagramModel.clearSelection();
@@ -51,16 +56,28 @@ const target = {
         diagramModel.addNode(node);
 
         // update the diagram with new widget
+        
         props.updateModel(diagramModel.serializeDiagram(), node.serialize());
+    },
+    hover(props,monitor,component){
+
+    const getCoordinatesOnF = monitor.getClientOffset()
+
+    //console.log(getCoordinatesOnF)
+
     }
 };
 
 function collect(connect, monitor) {
     return {
         connectDropTarget: connect.dropTarget(),
-        isOver: monitor.isOver()
+        isOver: monitor.isOver(),
+
+     
     };
 }
+
+
 
 class Diagram extends React.Component {
     constructor(props) {
@@ -69,6 +86,7 @@ class Diagram extends React.Component {
 
     componentDidMount() {
         this.setModel(this.props.model);
+        
     }
 
     componentWillReceiveProps(nextProps) {
@@ -78,6 +96,7 @@ class Diagram extends React.Component {
     }
 
     setModel(model, selectedNode) {
+        
         diagramModel = new RJD.DiagramModel();
         if (model) {
             diagramModel.deSerializeDiagram(model, engine);
@@ -87,12 +106,14 @@ class Diagram extends React.Component {
                 const nodes = diagramModel.getNodes();
                 const node = nodes[selectedNode.id];
                 node.setSelected(true);
+                //console.log(`nodo ${selectedNode.id} seleccionado`)
             }
         }
         engine.setDiagramModel(diagramModel);
     }
 
     onChangeHandler(model, action) {
+       
         console.log(`diagram changed: ${action.type}`);
 
         // Ignore some events
@@ -103,18 +124,26 @@ class Diagram extends React.Component {
         // Check for canvas events
         const deselectEvts = ['canvas-click', 'canvas-drag', 'items-selected', 'items-drag-selected', 'items-moved'];
         if (deselectEvts.indexOf(action.type) !== -1) {
+            
             if (action.model) {
+                
                 return this.props.updateModel(model, action.model.serialize());
             }
         }
 
         // Check for single selected items
         if (['node-selected', 'node-moved'].indexOf(action.type) !== -1) {
+            console.log(action)
+            
             return this.props.updateModel(model, action.model.serialize());
+
         }
         // e.g.: items-deleted
         this.props.updateModel(model);
+
+
     }
+
 
     render() {
         const { connectDropTarget } = this.props;
@@ -125,6 +154,8 @@ class Diagram extends React.Component {
             </div>
         )
     }
+
+    
 }
 
 export default DropTarget('node-source', target, collect)(Diagram);

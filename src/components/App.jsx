@@ -19,6 +19,7 @@ function copy(obj) {
 
 class App extends React.Component {
     constructor(props) {
+        console.log('constructor 111')
         super(props);
 
         let models = loadData();
