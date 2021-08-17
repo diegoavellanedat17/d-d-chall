@@ -5,6 +5,11 @@ import _ from 'lodash';
 
 import { engine } from './engine';
 import { ImageNodeModel } from '../nodes/imagenode/ImageNodeModel';
+import { Ec2NodeModel } from '../nodes/ec2node/Ec2NodeModel';
+import { ElbNodeModel } from '../nodes/elbnode/ElbNodeModel';
+import { RdsNodeModel } from '../nodes/rdsnode/RdsNodeModel';
+import { EditNodeModel } from '../nodes/editnode/EditNodeModel';
+
 
 
 // Setup the diagram model
@@ -20,10 +25,11 @@ const target = {
         const y = pageY - top - offsetY;
         const item = monitor.getItem();
         
-
         let node;
+        // According to the type show different nodes
 
         if (item.type === 'imagenode') {
+            console.log('soltaste un imgNode')
             node = new ImageNodeModel('Image Node', 'rgb(124, 28, 120)', {
                 title: '',
                 body: '',
@@ -41,10 +47,97 @@ const target = {
             });
         }
 
-        // console.log(`x = ${x}, y = ${y}`)
-        // console.log(gridSnap(x, y))
+        else if(item.type === 'ec2node') {
+ 
 
-        node.x = x ;
+            node = new Ec2NodeModel('Ec2 Node', 'rgb(11, 28, 120)', {
+                title: '',
+                body: '',
+                video: {
+                    url: ''
+                },
+                image: {
+                    src: '',
+                    alt: ''
+                },
+                info: {
+                    title: '',
+                    body: ''
+                }
+            });
+
+            diagramModel.addNode(node);
+        }
+
+        else if(item.type === 'elbnode') {
+ 
+
+            node = new ElbNodeModel('Elb Node', 'rgb(11, 28, 120)', {
+                title: '',
+                body: '',
+                video: {
+                    url: ''
+                },
+                image: {
+                    src: '',
+                    alt: ''
+                },
+                info: {
+                    title: '',
+                    body: ''
+                }
+            });
+
+        
+        }
+
+        else if(item.type === 'rdsnode') {
+ 
+
+            node = new RdsNodeModel('Rds Node', 'rgb(11, 28, 120)', {
+                title: '',
+                body: '',
+                video: {
+                    url: ''
+                },
+                image: {
+                    src: '',
+                    alt: ''
+                },
+                info: {
+                    title: '',
+                    body: ''
+                }
+            });
+
+        
+        }
+
+        else if(item.type === 'editnode') {
+ 
+
+            node = new EditNodeModel('Rds Node', 'rgb(11, 28, 120)', {
+                title: '',
+                body: '',
+                video: {
+                    url: ''
+                },
+                image: {
+                    src: '',
+                    alt: ''
+                },
+                info: {
+                    title: '',
+                    body: ''
+                }
+            });
+
+        
+        }
+
+
+
+        node.x = x  ;
         node.y = y ;
 
         // clear previously selected item(s)

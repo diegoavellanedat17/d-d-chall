@@ -1,3 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+.borders{
+  border:solid 1px red;
+}
 .dowload-modal {
   border-radius: 20px;
 
@@ -57,6 +61,7 @@
     flex: 1.2;
     display: flex;
     flex-direction: row;
+    
   }
 
   .preview-panel {
@@ -345,7 +350,7 @@
 
 .nodes-panel {
   flex-direction: column;
-  background-color: transparent;
+  background-color: #202020;
   padding: 1.5rem;
 
   .node-wrapper {
@@ -354,7 +359,12 @@
     .basic-node {
       width: 120px;
     }
+    .ports{
+      display: none;
+    }
   }
+
+
 }
 
 .color-picker {
@@ -369,9 +379,10 @@
 }
 // Diagram SASS
 .port{
-  width: 15px;
-  height: 15px;
+  width: 4px !important;
+  height: 4px  !important;
   background: rgba(white,0.1);
+  border:solid 2px #2532A9;
   &:hover,&.selected{
     background: rgb(192,255,0);
   }
@@ -443,6 +454,305 @@
       }
     }
   }
+}
+
+.ec2-basic-node{
+  background: transparent !important;
+  margin-top: 30px;
+  width: 150px;
+
+  .ec2-image{
+    
+    height: 100px;
+    //background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 89 100.13'%3E%3Cdefs%3E%3Cstyle%3E.cls-1{fill:%232e73b8;}.cls-2{fill:%23fff;}.cls-2,.cls-4{fill-opacity:0.3;}.cls-3{fill-opacity:0.5;}%3C/style%3E%3C/defs%3E%3Ctitle%3Erds-resource%3C/title%3E%3Cg id='Capa_2' data-name='Capa 2'%3E%3Cg id='Capa_1-2' data-name='Capa 1'%3E%3Cpath class='cls-1' d='M58.39,100.13H30.61L11.13,90.24,0,78V22.1L11.13,9.85,30.61,0H58.39L77.88,9.85,89,22.1V78L77.88,90.24Z'/%3E%3Cpath class='cls-2' d='M58.39,100.13V0L77.88,9.85V90.24Z'/%3E%3Cpath class='cls-3' d='M0,78V22.12L11.13,9.87V90.25Z'/%3E%3Cpath class='cls-4' d='M11.13,90.24V9.85L30.61,0V100.13Z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    //background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 81.95 99.64'%3E%3Cdefs%3E%3Cstyle%3E.cls-1{fill:%23f58534;}.cls-2{fill:%23fff;}.cls-2,.cls-4{fill-opacity:0.3;}.cls-3{fill-opacity:0.5;}%3C/style%3E%3C/defs%3E%3Ctitle%3Eelb-resource%3C/title%3E%3Cg id='Capa_2' data-name='Capa 2'%3E%3Cg id='Capa_1-2' data-name='Capa 1'%3E%3Cpath class='cls-1' d='M41,99.64l-8.17-4.1V89.22l-7.2,2.7-6.24-3.18V84.24l-5.65,1.63L8.65,83.31V80L4.1,81,0,79V20.65l4.1-2,4.54,1V16.33l5.06-2.55,5.65,1.63V10.9L25.6,7.72l7.2,2.66V4.1L41,0,62.81,11V21.47l2.33.85V16.11l5.17-1.37,11.64,5.95v23.2l-4.69.26-9-.81V56.08l9-.81,4.69.22V79L70.31,84.9l-5.17-1.37V77.11L62.81,78V88.63Z'/%3E%3Cpath class='cls-2' d='M65.14,56.42l12.12-1.07,4.69.22L70.31,56.79ZM32.81,58.86,55,57l7.8.48L41,59.71Z'/%3E%3Cpath class='cls-3' d='M65.14,43.1l5.17-.37L81.95,44l-4.69.26ZM32.81,40.67,41,39.85,62.81,42l-7.8.48Z'/%3E%3Cpath class='cls-4' d='M65.14,43V16.11l5.17-1.37V42.67Zm0,13.3,5.17.37V84.9l-5.17-1.37ZM32.81,40.6V4.1L41,0V39.79Zm0,54.94V58.78l8.17.85v40Zm-13.45-6.8V10.9L25.6,7.72v84.2ZM8.65,83.31v-67l5.06-2.55V85.86ZM4.1,81,0,79V20.65l4.1-2Z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 81.56 99.18'%3E%3Cdefs%3E%3Cstyle%3E.cls-1{fill:%23f58534;}.cls-2{fill-opacity:0.3;}%3C/style%3E%3C/defs%3E%3Ctitle%3Eec2-resource%3C/title%3E%3Cg id='Capa_2' data-name='Capa 2'%3E%3Cg id='Capa_1-2' data-name='Capa 1'%3E%3Cpath class='cls-1' d='M40.78,99.18,32.65,95.1V88.81l-7.17,2.68-6.21-3.13V83.88l-5.63,1.58-5-2.54V79.61l-4.52,1L0,78.58v-58l4.08-2.06,4.52,1V16.25l5-2.54,5.63,1.58V10.85l6.21-3.13,7.17,2.65V4.08L40.78,0,81.56,20.59v58Z'/%3E%3Cpath class='cls-2' d='M4.69,80.64.61,78.58v-58l4.08-2.06Zm9.56,4.82-5-2.54V16.25l5-2.54Zm11.84,6-6.21-3.13V10.85l6.21-3.13Zm7.17,3.6v-91L41.39,0V99.18Z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position-x: center;
+  }
+
+  .ec2-text{
+    font-size: 18px;
+    text-align: center;
+    margin-top: 10px;
+    font-family: 'Roboto', sans-serif;
+    color: white;
+  }
+
+  .fa{
+    padding: 5px;
+    opacity: 0.2;
+    cursor: pointer;
+    color: white;
+
+    &:hover{
+      opacity: 1.0;
+    }
+  }
+
+  .ports{
+    display: flex;
+    background:transparent;
+    padding: 1px;
+    
+
+    .in, .out{
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      
+    }
+
+    .in-port,.out-port{
+      display: flex;
+      margin-top: 1px;
+      >*{
+        align-self: center;
+      }
+      .name{
+        padding: 0 0px;
+        display: none;
+      }
+    }
+
+    .out-port{
+      justify-content: flex-end;
+      .name{
+    
+        justify-content: flex-end;
+        text-align: right;
+        display: none;
+      }
+    }
+  }
+
+}
+
+.elb-basic-node{
+  background: transparent !important;
+  margin-top: 30px;
+  width: 150px;
+
+  .elb-image{
+    
+    height: 100px;
+    //background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 89 100.13'%3E%3Cdefs%3E%3Cstyle%3E.cls-1{fill:%232e73b8;}.cls-2{fill:%23fff;}.cls-2,.cls-4{fill-opacity:0.3;}.cls-3{fill-opacity:0.5;}%3C/style%3E%3C/defs%3E%3Ctitle%3Erds-resource%3C/title%3E%3Cg id='Capa_2' data-name='Capa 2'%3E%3Cg id='Capa_1-2' data-name='Capa 1'%3E%3Cpath class='cls-1' d='M58.39,100.13H30.61L11.13,90.24,0,78V22.1L11.13,9.85,30.61,0H58.39L77.88,9.85,89,22.1V78L77.88,90.24Z'/%3E%3Cpath class='cls-2' d='M58.39,100.13V0L77.88,9.85V90.24Z'/%3E%3Cpath class='cls-3' d='M0,78V22.12L11.13,9.87V90.25Z'/%3E%3Cpath class='cls-4' d='M11.13,90.24V9.85L30.61,0V100.13Z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 81.95 99.64'%3E%3Cdefs%3E%3Cstyle%3E.cls-1{fill:%23f58534;}.cls-2{fill:%23fff;}.cls-2,.cls-4{fill-opacity:0.3;}.cls-3{fill-opacity:0.5;}%3C/style%3E%3C/defs%3E%3Ctitle%3Eelb-resource%3C/title%3E%3Cg id='Capa_2' data-name='Capa 2'%3E%3Cg id='Capa_1-2' data-name='Capa 1'%3E%3Cpath class='cls-1' d='M41,99.64l-8.17-4.1V89.22l-7.2,2.7-6.24-3.18V84.24l-5.65,1.63L8.65,83.31V80L4.1,81,0,79V20.65l4.1-2,4.54,1V16.33l5.06-2.55,5.65,1.63V10.9L25.6,7.72l7.2,2.66V4.1L41,0,62.81,11V21.47l2.33.85V16.11l5.17-1.37,11.64,5.95v23.2l-4.69.26-9-.81V56.08l9-.81,4.69.22V79L70.31,84.9l-5.17-1.37V77.11L62.81,78V88.63Z'/%3E%3Cpath class='cls-2' d='M65.14,56.42l12.12-1.07,4.69.22L70.31,56.79ZM32.81,58.86,55,57l7.8.48L41,59.71Z'/%3E%3Cpath class='cls-3' d='M65.14,43.1l5.17-.37L81.95,44l-4.69.26ZM32.81,40.67,41,39.85,62.81,42l-7.8.48Z'/%3E%3Cpath class='cls-4' d='M65.14,43V16.11l5.17-1.37V42.67Zm0,13.3,5.17.37V84.9l-5.17-1.37ZM32.81,40.6V4.1L41,0V39.79Zm0,54.94V58.78l8.17.85v40Zm-13.45-6.8V10.9L25.6,7.72v84.2ZM8.65,83.31v-67l5.06-2.55V85.86ZM4.1,81,0,79V20.65l4.1-2Z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    //background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 81.56 99.18'%3E%3Cdefs%3E%3Cstyle%3E.cls-1{fill:%23f58534;}.cls-2{fill-opacity:0.3;}%3C/style%3E%3C/defs%3E%3Ctitle%3Eec2-resource%3C/title%3E%3Cg id='Capa_2' data-name='Capa 2'%3E%3Cg id='Capa_1-2' data-name='Capa 1'%3E%3Cpath class='cls-1' d='M40.78,99.18,32.65,95.1V88.81l-7.17,2.68-6.21-3.13V83.88l-5.63,1.58-5-2.54V79.61l-4.52,1L0,78.58v-58l4.08-2.06,4.52,1V16.25l5-2.54,5.63,1.58V10.85l6.21-3.13,7.17,2.65V4.08L40.78,0,81.56,20.59v58Z'/%3E%3Cpath class='cls-2' d='M4.69,80.64.61,78.58v-58l4.08-2.06Zm9.56,4.82-5-2.54V16.25l5-2.54Zm11.84,6-6.21-3.13V10.85l6.21-3.13Zm7.17,3.6v-91L41.39,0V99.18Z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position-x: center;
+  }
+
+  .elb-text{
+    font-size: 18px;
+    text-align: center;
+    margin-top: 10px;
+    font-family: 'Roboto', sans-serif;
+    color: white;
+  }
+
+  .fa{
+    padding: 5px;
+    opacity: 0.2;
+    cursor: pointer;
+    color: white;
+
+    &:hover{
+      opacity: 1.0;
+    }
+  }
+
+  .ports{
+    display: flex;
+    background:transparent;
+    padding: 1px;
+    
+
+    .in, .out{
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      
+    }
+
+    .in-port,.out-port{
+      display: flex;
+      margin-top: 1px;
+      >*{
+        align-self: center;
+      }
+      .name{
+        padding: 0 0px;
+        display: none;
+      }
+    }
+
+    .out-port{
+      justify-content: flex-end;
+      .name{
+    
+        justify-content: flex-end;
+        text-align: right;
+        display: none;
+      }
+    }
+  }
+
+}
+
+.rds-basic-node{
+  background: transparent !important;
+  margin-top: 30px;
+  width: 150px;
+
+  .rds-image{
+    
+    height: 100px;
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 89 100.13'%3E%3Cdefs%3E%3Cstyle%3E.cls-1{fill:%232e73b8;}.cls-2{fill:%23fff;}.cls-2,.cls-4{fill-opacity:0.3;}.cls-3{fill-opacity:0.5;}%3C/style%3E%3C/defs%3E%3Ctitle%3Erds-resource%3C/title%3E%3Cg id='Capa_2' data-name='Capa 2'%3E%3Cg id='Capa_1-2' data-name='Capa 1'%3E%3Cpath class='cls-1' d='M58.39,100.13H30.61L11.13,90.24,0,78V22.1L11.13,9.85,30.61,0H58.39L77.88,9.85,89,22.1V78L77.88,90.24Z'/%3E%3Cpath class='cls-2' d='M58.39,100.13V0L77.88,9.85V90.24Z'/%3E%3Cpath class='cls-3' d='M0,78V22.12L11.13,9.87V90.25Z'/%3E%3Cpath class='cls-4' d='M11.13,90.24V9.85L30.61,0V100.13Z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    //background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 81.95 99.64'%3E%3Cdefs%3E%3Cstyle%3E.cls-1{fill:%23f58534;}.cls-2{fill:%23fff;}.cls-2,.cls-4{fill-opacity:0.3;}.cls-3{fill-opacity:0.5;}%3C/style%3E%3C/defs%3E%3Ctitle%3Eelb-resource%3C/title%3E%3Cg id='Capa_2' data-name='Capa 2'%3E%3Cg id='Capa_1-2' data-name='Capa 1'%3E%3Cpath class='cls-1' d='M41,99.64l-8.17-4.1V89.22l-7.2,2.7-6.24-3.18V84.24l-5.65,1.63L8.65,83.31V80L4.1,81,0,79V20.65l4.1-2,4.54,1V16.33l5.06-2.55,5.65,1.63V10.9L25.6,7.72l7.2,2.66V4.1L41,0,62.81,11V21.47l2.33.85V16.11l5.17-1.37,11.64,5.95v23.2l-4.69.26-9-.81V56.08l9-.81,4.69.22V79L70.31,84.9l-5.17-1.37V77.11L62.81,78V88.63Z'/%3E%3Cpath class='cls-2' d='M65.14,56.42l12.12-1.07,4.69.22L70.31,56.79ZM32.81,58.86,55,57l7.8.48L41,59.71Z'/%3E%3Cpath class='cls-3' d='M65.14,43.1l5.17-.37L81.95,44l-4.69.26ZM32.81,40.67,41,39.85,62.81,42l-7.8.48Z'/%3E%3Cpath class='cls-4' d='M65.14,43V16.11l5.17-1.37V42.67Zm0,13.3,5.17.37V84.9l-5.17-1.37ZM32.81,40.6V4.1L41,0V39.79Zm0,54.94V58.78l8.17.85v40Zm-13.45-6.8V10.9L25.6,7.72v84.2ZM8.65,83.31v-67l5.06-2.55V85.86ZM4.1,81,0,79V20.65l4.1-2Z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    //background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 81.56 99.18'%3E%3Cdefs%3E%3Cstyle%3E.cls-1{fill:%23f58534;}.cls-2{fill-opacity:0.3;}%3C/style%3E%3C/defs%3E%3Ctitle%3Eec2-resource%3C/title%3E%3Cg id='Capa_2' data-name='Capa 2'%3E%3Cg id='Capa_1-2' data-name='Capa 1'%3E%3Cpath class='cls-1' d='M40.78,99.18,32.65,95.1V88.81l-7.17,2.68-6.21-3.13V83.88l-5.63,1.58-5-2.54V79.61l-4.52,1L0,78.58v-58l4.08-2.06,4.52,1V16.25l5-2.54,5.63,1.58V10.85l6.21-3.13,7.17,2.65V4.08L40.78,0,81.56,20.59v58Z'/%3E%3Cpath class='cls-2' d='M4.69,80.64.61,78.58v-58l4.08-2.06Zm9.56,4.82-5-2.54V16.25l5-2.54Zm11.84,6-6.21-3.13V10.85l6.21-3.13Zm7.17,3.6v-91L41.39,0V99.18Z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position-x: center;
+  }
+
+  .rds-text{
+    font-size: 18px;
+    text-align: center;
+    margin-top: 10px;
+    font-family: 'Roboto', sans-serif;
+    color: white;
+  }
+
+  .fa{
+    padding: 5px;
+    opacity: 0.2;
+    cursor: pointer;
+    color: white;
+
+    &:hover{
+      opacity: 1.0;
+    }
+  }
+
+  .ports{
+    display: flex;
+    background:transparent;
+    padding: 1px;
+    
+
+    .in, .out{
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      
+    }
+
+    .in-port,.out-port{
+      display: flex;
+      margin-top: 1px;
+      >*{
+        align-self: center;
+      }
+      .name{
+        padding: 0 0px;
+        display: none;
+      }
+    }
+
+    .out-port{
+      justify-content: flex-end;
+      .name{
+    
+        justify-content: flex-end;
+        text-align: right;
+        display: none;
+      }
+    }
+  }
+
+}
+
+.edit-basic-node{
+
+
+  background: transparent !important;
+  margin-top: 30px;
+  width: 170px;
+
+  input{
+    font-family: 'Roboto', sans-serif;
+    font-size: 40px;
+    float:left; 
+    width:100%;
+    height:56px;
+    text-align: center;
+    background: transparent;
+    border: transparent;
+    cursor: pointer;
+    color: white;
+    
+  }
+  input::placeholder{
+    color:white;
+  }
+
+  .fa{
+    padding: 5px;
+    opacity: 0.2;
+    cursor: pointer;
+    color: white;
+
+    &:hover{
+      opacity: 1.0;
+    }
+  }
+
+
+    .ports{
+      display: flex;
+      background:transparent;
+      padding: 1px;
+      
+  
+      .in, .out{
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        
+      }
+  
+      .in-port,.out-port{
+        display: flex;
+        margin-top: 1px;
+        >*{
+          align-self: center;
+        }
+        .name{
+          padding: 0 0px;
+          display: none;
+        }
+      }
+  
+      .out-port{
+        justify-content: flex-end;
+        .name{
+      
+          justify-content: flex-end;
+          text-align: right;
+          display: none;
+        }
+      }
+    
+
+
+
+   
+  }
+
+
+
+
+
 }
 
 img {

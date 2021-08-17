@@ -29,7 +29,7 @@
 .scroll { overflow: auto;  }
 .spacer { flex: 1; }
 
-.panel, .toolbar { background-color: #fff; }
+.panel, .toolbar {background-color: #202020;}
 
 .toolbar {
   display:flex;
@@ -45,7 +45,7 @@
   background-color: #ddd;
 
 }
-.content { background-color: white; }
+.content { background-color: black; }
 
 .footer { background-color: #ccc; }
 .header { background-color: #3c3c3c; color: #fff; }

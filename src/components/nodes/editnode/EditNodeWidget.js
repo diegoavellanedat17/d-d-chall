@@ -1,8 +1,8 @@
 import React from 'react';
 import * as RJD from '../../../../lib/main';
-import { ImageNodeModel } from './ImageNodeModel';
+import { EditNodeModel } from './EditNodeModel';
 
-export class ImageNodeWidget extends React.Component {
+export class EditNodeWidget extends React.Component {
   static defaultProps = {
     node: null,
     color: 'rgb(224, 98, 20)'
@@ -20,7 +20,7 @@ export class ImageNodeWidget extends React.Component {
 
     if (displayOnly) {
       
-      inputNode = new ImageNodeModel(node.name, color);
+      inputNode = new EditNodeModel(node.name, color);
     }
 
     return inputNode.getInPort ? <RJD.DefaultPortLabel model={inputNode.getInPort()} key='in-port' /> : null;
@@ -31,7 +31,7 @@ export class ImageNodeWidget extends React.Component {
     let outputNode = node;
 
     if (displayOnly) {
-      outputNode = new ImageNodeModel(node.name, color);
+      outputNode = new EditNodeModel(node.name, color);
     }
 
     return outputNode.getOutPort ? <RJD.DefaultPortLabel model={outputNode.getOutPort()} key='out-port' /> : null;
@@ -46,30 +46,31 @@ export class ImageNodeWidget extends React.Component {
     if (color || displayColor) {
       style.background = color || displayColor;
     }
-
-
+   
+   
       return (
-        <div className='basic-node' style={style}>
-          <div className='title'>
-            <div className='name'>
-              image Node
-            </div>
-            {!displayOnly ? <div className='fa fa-close' onClick={this.onRemove.bind(this)} /> : null}
-          </div>
+        
+        <div className='edit-basic-node' style={style}>
+
+          {!displayOnly ? <div className='fa fa-close' onClick={this.onRemove.bind(this)} /> : null}
+          <input type="text" placeholder="Text" />
           <div className='ports'>
-            <div className='in'>
+            <div className='in '>
               {this.getInPort()}
             </div>
-            <div className='out'>
+            
+            <div className='out '>
               {this.getOutPort()}
             </div>
           </div>
+
         </div>
       );
 
+    
     }
 
   
 }
 
-export const ImageNodeWidgetFactory = React.createFactory(ImageNodeWidget);
+export const EditNodeWidgetFactory = React.createFactory(EditNodeWidget);

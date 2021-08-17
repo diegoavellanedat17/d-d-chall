@@ -1,8 +1,8 @@
 import React from 'react';
 import * as RJD from '../../../../lib/main';
-import { ImageNodeModel } from './ImageNodeModel';
+import { RdsNodeModel } from './RdsNodeModel';
 
-export class ImageNodeWidget extends React.Component {
+export class RdsNodeWidget extends React.Component {
   static defaultProps = {
     node: null,
     color: 'rgb(224, 98, 20)'
@@ -20,7 +20,7 @@ export class ImageNodeWidget extends React.Component {
 
     if (displayOnly) {
       
-      inputNode = new ImageNodeModel(node.name, color);
+      inputNode = new RdsNodeModel(node.name, color);
     }
 
     return inputNode.getInPort ? <RJD.DefaultPortLabel model={inputNode.getInPort()} key='in-port' /> : null;
@@ -31,7 +31,7 @@ export class ImageNodeWidget extends React.Component {
     let outputNode = node;
 
     if (displayOnly) {
-      outputNode = new ImageNodeModel(node.name, color);
+      outputNode = new RdsNodeModel(node.name, color);
     }
 
     return outputNode.getOutPort ? <RJD.DefaultPortLabel model={outputNode.getOutPort()} key='out-port' /> : null;
@@ -46,16 +46,16 @@ export class ImageNodeWidget extends React.Component {
     if (color || displayColor) {
       style.background = color || displayColor;
     }
-
-
+   
+   
       return (
-        <div className='basic-node' style={style}>
-          <div className='title'>
-            <div className='name'>
-              image Node
-            </div>
-            {!displayOnly ? <div className='fa fa-close' onClick={this.onRemove.bind(this)} /> : null}
+        
+        <div className='rds-basic-node' style={style}>
+          <div className='rds-image'>
+          
           </div>
+          {!displayOnly ? <div className='fa fa-close' onClick={this.onRemove.bind(this)} /> : null}
+          
           <div className='ports'>
             <div className='in'>
               {this.getInPort()}
@@ -64,12 +64,18 @@ export class ImageNodeWidget extends React.Component {
               {this.getOutPort()}
             </div>
           </div>
+
+          <div className="rds-text">
+            RDS
+          </div>
+
         </div>
       );
 
+    
     }
 
   
 }
 
-export const ImageNodeWidgetFactory = React.createFactory(ImageNodeWidget);
+export const RdsNodeWidgetFactory = React.createFactory(RdsNodeWidget);

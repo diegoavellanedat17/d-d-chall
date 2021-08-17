@@ -1,11 +1,11 @@
 import _ from 'lodash';
 import * as RJD from '../../../../lib/main';
 
-export class ImageNodeModel extends RJD.NodeModel {
+export class ElbNodeModel extends RJD.NodeModel {
   constructor( name = 'Untitled', color = 'rgb(224, 98, 20)', content) {
 
     
-    super('imagenode');
+    super('elbnode');
     this.addPort(new RJD.DefaultPortModel(false, 'output', 'Out'));
     this.addPort(new RJD.DefaultPortModel(true, 'input', 'In'));
     this.name = name;
