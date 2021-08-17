@@ -18,6 +18,7 @@ let diagramModel = new RJD.DiagramModel();
 // React- DnD Properties  
 const target = {
     drop(props, monitor) {
+        console.log('aca')
         const {x: pageX, y: pageY} = monitor.getSourceClientOffset();
         const {left = 0, top = 0} = engine.canvas.getBoundingClientRect();
         const {offsetX, offsetY} = engine.diagramModel;
@@ -151,14 +152,8 @@ const target = {
         // update the diagram with new widget
         
         props.updateModel(diagramModel.serializeDiagram(), node.serialize());
-    },
-    hover(props,monitor,component){
-
-    const getCoordinatesOnF = monitor.getClientOffset()
-
-    //console.log(getCoordinatesOnF)
-
     }
+
 };
 
 function collect(connect, monitor) {
@@ -199,7 +194,7 @@ class Diagram extends React.Component {
                 const nodes = diagramModel.getNodes();
                 const node = nodes[selectedNode.id];
                 node.setSelected(true);
-                //console.log(`nodo ${selectedNode.id} seleccionado`)
+         
             }
         }
         engine.setDiagramModel(diagramModel);
